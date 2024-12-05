@@ -1,0 +1,31 @@
+body {
+    margin: 10px 0 0 0;
+}
+
+.boton_accion {
+
+}
+
+.room, .simple {
+    margin: auto; /* Para que aparezca centrado */
+    width: 50%;
+    height: 200px;
+    border: 2px solid gray; /* Borde de 2px de grosor y color gris */
+    border-radius: 10px; /* Redondea las esquinas con un radio de 10px */
+    padding: 20px; /* Espacio libre interior */
+}
+
+.imagen {
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+.imagen img {
+    width: auto;
+    height: 100%;
+}
+
+.contenido {
+    float: right;
+}

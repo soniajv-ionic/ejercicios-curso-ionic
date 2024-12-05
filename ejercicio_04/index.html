@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div><button id="boton-doble" class="botton-accion">Botón habitación doble</button></div>
+    <div><button id="boton-simple" class="botton-accion">Botón habitación simple</button></div>
+    <div class="simple">
+
+        <div class="imagen">
+            <img src="https://mayer-house.b-cdn.net/wp-content/uploads/2022/04/Suites-high-rez-4-500x500.jpg">
+        </div>
+        <div class="contenido">
+            <span>Precio: 100€</span>
+        </div>
+    </div>
+    <div class="room">
+        <div class="imagen">
+            <img src="https://mayer-house.b-cdn.net/wp-content/uploads/2022/04/Suites-high-rez-4-500x500.jpg">
+        </div>
+        <div class="contenido">
+            <span>Precio: 100€</span>
+        </div>
+    </div>
+    <div class="simple">
+        <div class="imagen">
+            <img src="https://mayer-house.b-cdn.net/wp-content/uploads/2022/04/Suites-high-rez-4-500x500.jpg">
+        </div>
+        <div class="contenido">
+            <span>Precio: 100€</span>
+        </div>
+    </div>
+    <div class="room">
+        <div class="imagen">
+            <img src="https://mayer-house.b-cdn.net/wp-content/uploads/2022/04/Suites-high-rez-4-500x500.jpg">
+        </div>
+        <div class="contenido">
+            <span>Precio: 100€</span>
+        </div>
+    </div>
+    <div class="room">
+        <div class="imagen">
+            <img src="https://mayer-house.b-cdn.net/wp-content/uploads/2022/04/Suites-high-rez-4-500x500.jpg">
+        </div>
+        <div class="contenido">
+            <span>Precio: 100€</span>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("#boton-doble").addEventListener("click", ()=>{
+         document.querySelectorAll(".room").forEach((room)=>{
+            room.style.backgroundColor="pink";
+         })
+    })
+    document.querySelector("#boton-simple").addEventListener("click", ()=>{
+         document.querySelectorAll(".simple").forEach((room)=>{
+            room.style.backgroundColor="green";
+         })
+    })
+</script>
