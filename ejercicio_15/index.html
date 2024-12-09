@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="textField">
+    <button id="btnConvert">Convertir</button>
+</body>
+
+</html>
+<script>
+    document.querySelector("#btnConvert").addEventListener("click", () => {
+        // forma larga
+        function convertText() {
+            let mayusculas = document.querySelector("#textField").value.toUpperCase();
+            let sinEsp = mayusculas.trim();
+            return sinEsp;
+        }
+        console.log("*"+convertText()+"*");
+        // forma corta
+        console.log(document.querySelector("#textField").value.toUpperCase().trim());
+        document.querySelector("#textField").value = "";
+    })
+</script>
