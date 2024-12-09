@@ -1,0 +1,12 @@
+.car {
+    width: 200px;
+    transition: all 0.25s;
+    position:relative;
+    z-index:1;
+}
+
+.meta {
+    position:absolute;
+    left: 500px; 
+    top: 100px; 
+}
