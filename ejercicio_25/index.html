@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 
+    Botón 'Terror'
+    Boton 'Acción'
+    input de titulo para introducir el titulo
+    5 Fichas de series con titulo genero e imagen
+    -->
+    <header><h1><u>Series</u></h1></header>
+    <div class="button-container">
+        <button id="accion-btn">Acción</button> 
+        <button id="terror-btn">Terror</button>
+        <button id="all-btn">Todas</button>    
+    </div>
+
+    <div class="input-container">
+        <input type="search" name="" id="buscar">
+    </div>
+
+    <div class="series-container">
+        <div class="serie comedia terror">
+            <img src="agatha.jpg" alt="Agatha All Along">
+            <h3>Agatha All Along</h3>
+            <p>Genero: Terror, Comedia</p>
+        </div>
+        <div class="serie accion scifi">
+            <img src="Babylon_5.webp" alt="Babylon 5">
+            <h3>Babylon 5</h3>
+            <p>Genero: Acción, Ciencia-ficción</p>
+        </div>
+        <div class="serie accion">
+            <img src="burn_notice.jpg" alt="Burn Notice">
+            <h3>Burn Notice</h3>
+            <p>Genero: Acción, intriga</p>
+        </div>
+        <div class="serie comedia terror">
+            <img src="ghosts.jpg" alt="Ghosts">
+            <h3>Ghosts</h3>
+            <p>Genero: Comedia, Terror</p>
+        </div>
+        <div class="serie scifi accion">
+            <img src="the_expanse.jpeg" alt="The Expanse">
+            <h3>The Expanse</h3>
+            <p>Genero: Ciencia-Ficción, Acción, Terror</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    function selectGenre(genre, bgColor) {
+        let series = document.querySelectorAll(genre)
+        series.forEach((serie) => {
+            serie.style.backgroundColor = bgColor;
+        })
+    }
+    document.querySelector('#terror-btn').addEventListener('click', (event) => {
+        selectGenre('.terror', 'red');
+
+    });
+    document.querySelector('#accion-btn').addEventListener('click', (event) => {
+        selectGenre('.accion', 'blue');
+
+    });
+    document.querySelector('#all-btn').addEventListener('click', (event) => {
+        selectGenre('.serie', 'rgb(61, 58, 58)');
+
+    });
+</script>
