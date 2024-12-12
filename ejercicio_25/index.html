@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Series</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- 
@@ -14,45 +16,48 @@
     input de titulo para introducir el titulo
     5 Fichas de series con titulo genero e imagen
     -->
-    <header><h1><u>Series</u></h1></header>
+    <header>
+        <h1><u>Series</u></h1>
+    </header>
     <div class="button-container">
-        <button id="accion-btn">Acción</button> 
+        <button id="accion-btn">Acción</button>
         <button id="terror-btn">Terror</button>
-        <button id="all-btn">Todas</button>    
+        <button id="all-btn">Todas</button>
     </div>
 
     <div class="input-container">
-        <input type="search" name="" id="buscar">
+        <input type="search" name="" id="i-titulo">
     </div>
 
     <div class="series-container">
-        <div class="serie comedia terror">
+        <div class="serie comedia terror" titulo="agatha all along">
             <img src="agatha.jpg" alt="Agatha All Along">
             <h3>Agatha All Along</h3>
             <p>Genero: Terror, Comedia</p>
         </div>
-        <div class="serie accion scifi">
+        <div class="serie accion scifi" titulo="babylon 5">
             <img src="Babylon_5.webp" alt="Babylon 5">
             <h3>Babylon 5</h3>
             <p>Genero: Acción, Ciencia-ficción</p>
         </div>
-        <div class="serie accion">
+        <div class="serie accion" titulo="burn notice">
             <img src="burn_notice.jpg" alt="Burn Notice">
             <h3>Burn Notice</h3>
             <p>Genero: Acción, intriga</p>
         </div>
-        <div class="serie comedia terror">
+        <div class="serie comedia terror" titulo="ghosts">
             <img src="ghosts.jpg" alt="Ghosts">
             <h3>Ghosts</h3>
             <p>Genero: Comedia, Terror</p>
         </div>
-        <div class="serie scifi accion">
+        <div class="serie scifi accion" titulo="the expanse">
             <img src="the_expanse.jpeg" alt="The Expanse">
             <h3>The Expanse</h3>
             <p>Genero: Ciencia-Ficción, Acción, Terror</p>
         </div>
     </div>
 </body>
+
 </html>
 <script>
 
@@ -74,4 +79,19 @@
         selectGenre('.serie', 'rgb(61, 58, 58)');
 
     });
+
+    let inputTitulo = document.querySelector('#i-titulo');
+    inputTitulo.addEventListener('input', (event) => {
+        let cadenaBusqueda = inputTitulo.value.toLowerCase();
+       //console.log(`Buscando ${cadenaBusqueda}`);
+        let series = document.querySelectorAll(`[titulo*=${cadenaBusqueda}]`);
+        selectGenre(".serie", "rgb(250, 250, 205)");
+        if (cadenaBusqueda.length > 0) {
+            selectGenre(`[titulo*=${cadenaBusqueda}]`, 'orange');
+
+       } else if (cadenaBusqueda.length === 0) {
+            selectGenre(".serie", 'rgb(61, 58, 58)');
+        }
+    });
+
 </script>
