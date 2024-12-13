@@ -19,15 +19,24 @@ function processData(data){
              console.log(consola.name);
      });
 
+     const consolas = data.map(consola => {
+        return `delete ${consola.name}`;
+     }
+
+     );
+     console.log(consolas);
+
 }
 
 function doRequest(url) {
     fetch(url)
         .then((response) => {
-            if (!response.ok) {
+            //if (!response.ok) {
+            if (response.status != 200) { // 200 es OK
                 throw new Error("Network response was not ok");
             }
-            return response.json();
+            // return response.text(); // Si se esta obteniendo texto
+            return response.json(); // Si se esta obteniendo json
         })
         .then((data) => {
             
