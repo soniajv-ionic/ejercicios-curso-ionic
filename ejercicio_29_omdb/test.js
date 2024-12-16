@@ -6,22 +6,22 @@ const COMMON_REQUEST = `http://www.omdbapi.com/?apikey=${API_KEY}&`;
 // doRequest(COMMON_REQUEST + 't=Batman')
 // Mostrar por pantalla el titulo, director y los actores (por separado, hay que usar split)
 
-// Ejercicio2
-// doRequest(COMMON_REQUEST + 's=Batman')
-// Mostrar el titulo y el año de las peliculas estrenasa en el año 2000 y sucesivos
-
-
 // function processData(data){
 //     console.log(data.Title);
 //     console.log(data.Director);
 //     console.log(data.Actors.split());
 // }
 
+
+// Ejercicio2
+// doRequest(COMMON_REQUEST + 's=Batman')
+// Mostrar el titulo y el año de las peliculas estrenasa en el año 2000 y sucesivos
+
 function processData(data) {
     console.log(data.Search.forEach(element => {
        if (element.Year >= 2000) {
-        console.log(`El titulo es ${element.Title} y el año ${element.Year}`);
-        }       
+        console.log(`El título es ${element.Title} y el año es: ${element.Year}`);
+       }
     }));
 }
 
