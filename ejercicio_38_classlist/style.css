@@ -1,0 +1,16 @@
+/* Estilo para el botón cuando está activo */
+.activo {
+    background-color: green;  /* Color de fondo verde */
+    color: white;             /* Color del texto blanco */
+    border: 2px solid rgb(3, 88, 3);  /* Borde verde */
+}
+
+
+
+/* Estilo para el botón cuando está desactivado */
+.desactivado {
+    background-color: red;   /* Color de fondo rojo */
+    color: white;            /* Color del texto blanco */
+    border: 2px solid rgb(129, 2, 2);   /* Borde rojo */
+    cursor: not-allowed;     /* Cursor indicando que el botón está deshabilitado */
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="boton activo" id="b1">Pulsa</button>
+</body>
+</html>
+<script>
+    setTimeout(() => {
+        document.querySelector("#b1").classList.remove("activo");
+        document.querySelector("#b1").classList.add("desactivado");
+    }, 1_000
+    );
+</script>
