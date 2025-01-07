@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="ls_manager.js"></script>
-</head>
-<body>
-    <input type="text" name="" id="i-texto" placeholder="Escribe algo...">
+  </head>
+  <body>
+    <input type="text" name="" id="i-texto" placeholder="Escribe algo..." />
     <button id="b-guardar">Guardar</button>
-    <button id="b-recuperar"">Recuperar</button>
-</body>
+    <button id="b-recuperar">Recuperar</button>
+  </body>
 </html>
 <script>
-    const KEY_TEXT = "texto";
-    const iTexto = document.querySelector("#i-texto");
-    document.querySelector("#b-guardar").addEventListener('click', () => {
-        let texto = iTexto.value;
-        saveToLocalStorage(KEY_TEXT, texto);
-    })
-    document.querySelector("#b-recuperar").addEventListener('click', () => {
-        let texto = getFromLocalStorage(KEY_TEXT);
-        iTexto.value = texto;
-    })
+  const KEY_TEXT = "texto";
+  const iTexto = document.querySelector("#i-texto");
+  const bGuardar = document.querySelector("#b-guardar");
+  const bRecuperar = document.querySelector("#b-recuperar");
+
+  bGuardar.addEventListener("click", () => {
+    let texto = iTexto.value;
+    saveToLocalStorage(KEY_TEXT, texto);
+  });
+  bRecuperar.addEventListener("click", () => {
+    let texto = getFromLocalStorage(KEY_TEXT);
+    iTexto.value = texto;
+  });
 </script>
