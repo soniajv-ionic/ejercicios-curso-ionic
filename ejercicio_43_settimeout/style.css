@@ -41,11 +41,3 @@ footer {
 .hidden {
   display: none;
 }
-
-.text-container {
-  position: absolute; /* Posiciona el texto sobre la imagen */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set interval</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="gatito"><img src="rb_79197.png" alt="Gatito" width="10%"></div>
+    <div id="gato-vertical"><img src="rb_79197.png" alt="Gatito" width="10%"></div>
+    <div style="font-size:44px;"><label for="crono">Cronometro: </label><span id="crono">00</span></div>
+    <div id="reloj" style="font-size:24px;">0</div>
+    <div class="text-container">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse porro,
+        corporis eligendi ea minima voluptatum. Consectetur eaque nesciunt enim at
+        itaque? Perferendis alias officia ab culpa veniam tempore cumque rem!
+        Nesciunt ipsum molestias excepturi magni quis doloremque ex inventore
+        repellendus, odio deleniti vel obcaecati iusto dolor ratione ad alias. Cum
+        adipisci qui atque sequi consequatur nesciunt sint neque nemo commodi?
+        Quaerat dolores quas consequuntur eaque neque, placeat debitis commodi
+        tenetur sapiente itaque distinctio dolor at. Recusandae nesciunt
+        consequatur maiores, doloremque quasi, distinctio, pariatur expedita
+        minima ratione cumque nostrum fugiat. Amet. Dignissimos rerum, consectetur
+        eos tempore laboriosam doloremque aliquam blanditiis fuga provident
+        impedit modi illum, eius inventore ex, voluptatum temporibus? Perferendis,
+        placeat veniam. Eligendi vel, et optio labore qui tempore quae. Fugiat
+        quis repudiandae nostrum doloribus laborum nulla saepe beatae! Quaerat,
+        asperiores earum. Tempora possimus reiciendis nesciunt repellendus,
+        incidunt expedita officiis explicabo eum optio fuga dolor qui! Illo porro
+        repudiandae repellendus! Eos minus, laudantium quis expedita ducimus
+        placeat itaque. Ea aliquid magnam deserunt laborum dolorum eveniet
+        dignissimos, commodi eaque eligendi aperiam sint perspiciatis velit
+        architecto quia? Vel vitae explicabo iste inventore! Minima laboriosam
+
+    </div>
+</body>
+</html>
+<script>
+    let contador = 0;
+    setInterval(() => {
+        console.log(contador);
+        contador++;
+        if (contador <10) {
+            contador = '0' + contador;
+        }
+        document.querySelector('#crono').innerText = contador;
+    }, 1000);
+
+setInterval(() => {
+    let fecha = new Date();
+    let hora = fecha.getHours();
+    let minutos = fecha.getMinutes();
+    let segundos = fecha.getSeconds();
+    document.querySelector('#reloj').innerText = `${hora}:${minutos}:${segundos}`;
+}, 1000);
+
+
+let marginLeft = 0;
+let marginTop = 0;
+setInterval(() => {
+    marginLeft += 2;
+    marginTop += 2;
+    let divGatito = document.querySelector('#gatito');
+    let divGatoVertical = document.querySelector('#gato-vertical');
+    divGatito.style.marginLeft = `${marginLeft}px`;
+    divGatoVertical.style.marginTop = `${marginTop}px`;
+    if(marginLeft > window.innerWidth) {
+        marginLeft = -window.innerWidth*0.05;
+    }
+    if(marginTop > window.innerHeight) {
+        marginTop = -window.innerHeight*0.05;
+        let ramdonLeft = Math.random() * window.innerWidth;
+        divGatoVertical.style.marginLeft = `${ramdonLeft}px`;
+    }
+}, 10);
+</script>
