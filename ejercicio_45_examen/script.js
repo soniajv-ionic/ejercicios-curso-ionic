@@ -1,74 +1,68 @@
-const question1 = document.querySelector('#question-1');
-const question2 = document.querySelector('#question-2');
-const question3 = document.querySelector('#question-3');
-const btnNext = document.querySelector('#next-question');
-const result = document.querySelector('#result');
+const btnNext = document.querySelector("#next-question");
+const result = document.querySelector("#result");
+// Selecciona todas las preguntas (divs con clase "question")
+const questions = document.querySelectorAll(".question");
+let correctAnswer = false;
+let currentQuestion = "question-1";
 
-question2.classList.add('hidden');
-question3.classList.add('hidden');
+document.querySelector("#question-2").classList.add("hidden");
+document.querySelector("#question-3").classList.add("hidden");
 
-let answer1 = 'b';
-let answer2 = 'b';
-let answer3 = 'c';
-
-
-function checkAnswer(questionId, correctAnswer) {
-    const selectedRadio = document.querySelector(`input[name="${questionId}"]:checked`);
-    if (selectedRadio) {
-        if (selectedRadio.value === correctAnswer) {
-            result.textContent = 'Respuesta correcta';
-        } else {
-            result.textContent = 'Respuesta incorrecta';
-        }
-    } 
-}
-
-        // Ocultar la pregunta actual y mostrar la siguiente
- //       document.getElementById(`question-${questionId.charAt(1)}`).classList.add('hidden');
- //       nextQuestion.classList.remove('hidden');
-//        result.textContent = '';
-
-function unckeckRadioButtons(questionId) {
-    const radios = document.querySelectorAll(`input[name=${questionId}]`);
-    radios.forEach(radio => {
-        radio.checked = false;
-    });
-}
+let answers = ["a", "b", "c"];
 
 function nextQuestion() {
-    if (!question1.classList.contains('hidden')) {
-        question1.classList.add('hidden');
-        question2.classList.remove('hidden');
-        unckeckRadioButtons('q1');
-    } else if (!question2.classList.contains('hidden')) {
-        question2.classList.add('hidden');
-        question3.classList.remove('hidden');
-        unckeckRadioButtons('q2');
-    } else if (!question3.classList.contains('hidden')) {
-        question3.classList.add('hidden');
-        question1.classList.remove('hidden');
-        unckeckRadioButtons('q3');
-    }
+  let numCurrentQuestion = parseInt(
+    currentQuestion[currentQuestion.length - 1]
+  );
+  let nextQuestion = `question-${numCurrentQuestion + 1}`;
+  if (numCurrentQuestion < questions.length) {
+    document.querySelector(`#${currentQuestion}`).classList.add("hidden");
+    document.querySelector(`#${nextQuestion}`).classList.remove("hidden");
+  } else {
+    clearInterval(intervalId);
+    btnNext.disabled = true;
+  }
+  currentQuestion = nextQuestion;
 }
 
-btnNext.addEventListener('click', () => {
-    if (!question1.classList.contains('hidden')) {
-        checkAnswer('q1', answer1);
-    } else if (!question2.classList.contains('hidden')) {
-        checkAnswer('q2', answer2);
-    } else if (!question3.classList.contains('hidden')) {
-        checkAnswer('q3', answer3);
-    }
+btnNext.addEventListener("click", () => {
+  if (correctAnswer) {
     nextQuestion();
+  }
+  result.textContent = "";
 });
 
+/* Añadir listeners a los radiobuttons  */
+questions.forEach((question) => {
+  // Selecciona los radio buttons dentro de cada pregunta
+  const radioButtons = question.querySelectorAll('input[type="radio"]');
+
+  // Agrega un listener al evento "change" para cada radio button
+  radioButtons.forEach((radio) => {
+    radio.addEventListener("change", (event) => {
+      checkAnswer(radio.name, event.target.value);
+      currentQuestion = question.id;
+    });
+  });
+});
+
+function checkAnswer(questionId, answer) {
+  let numQuestion = questionId[questionId.length - 1];
+  if (answer === answers[numQuestion - 1]) {
+    result.textContent = "Respuesta correcta";
+    correctAnswer = true;
+  } else {
+    result.textContent = "Respuesta incorrecta";
+    correctAnswer = false;
+  }
+}
 
 let contador = 0;
-setInterval(() => {
-     contador++;
-     document.querySelector('#crono').innerText = contador;
-     if (contador === 5) {
-         nextQuestion();
-         contador = 0;
-     }
+const intervalId = setInterval(() => {
+  contador++;
+  document.querySelector("#crono").innerText = contador;
+  if (contador === 5) {
+    nextQuestion();
+    contador = 0;
+  }
 }, 1000);
