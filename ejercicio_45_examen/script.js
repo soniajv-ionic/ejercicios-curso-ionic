@@ -4,9 +4,13 @@ const result = document.querySelector("#result");
 const questions = document.querySelectorAll(".question");
 let correctAnswer = false;
 let currentQuestion = "question-1";
+let puntuacion = 0;
+const divPuntuacion = document.querySelector('#puntuacion');
+let intervalId
 
 document.querySelector("#question-2").classList.add("hidden");
 document.querySelector("#question-3").classList.add("hidden");
+document.querySelector("#puntuacion").classList.add("hidden");
 
 let answers = ["a", "b", "c"];
 
@@ -18,9 +22,14 @@ function nextQuestion() {
   if (numCurrentQuestion < questions.length) {
     document.querySelector(`#${currentQuestion}`).classList.add("hidden");
     document.querySelector(`#${nextQuestion}`).classList.remove("hidden");
+    stopCrono();
+    initCrono();
   } else {
     clearInterval(intervalId);
-    btnNext.disabled = true;
+    //btnNext.disabled = true;
+    document.querySelector(".container").classList.add("hidden");
+    divPuntuacion.classList.remove("hidden");
+    mostrarPuntuacion();
   }
   currentQuestion = nextQuestion;
 }
@@ -50,6 +59,7 @@ function checkAnswer(questionId, answer) {
   let numQuestion = questionId[questionId.length - 1];
   if (answer === answers[numQuestion - 1]) {
     result.textContent = "Respuesta correcta";
+    puntuacion++;
     correctAnswer = true;
   } else {
     result.textContent = "Respuesta incorrecta";
@@ -58,11 +68,39 @@ function checkAnswer(questionId, answer) {
 }
 
 let contador = 0;
-const intervalId = setInterval(() => {
+function mostrarCrono() {  
   contador++;
   document.querySelector("#crono").innerText = contador;
   if (contador === 5) {
     nextQuestion();
     contador = 0;
   }
-}, 1000);
+
+}
+
+function initCrono() {
+  contador = 0;
+  intervalId = setInterval(mostrarCrono, 1000);
+}
+
+function stopCrono() {
+  clearInterval(intervalId);
+}
+
+
+function mostrarPuntuacion() {
+      // Crear el h1 con la puntuación
+      const h1 = document.createElement('h1');
+      h1.textContent = "PUNTUACION"; // Se inserta la puntuación en el h1
+      
+      // Crear el h3 con el mensaje
+      const h3 = document.createElement('h3');
+      h3.textContent = `La puntuación obtenida es: ${puntuacion}`; // Se inserta el texto en el h3
+      
+      // Agregar los elementos al div
+      divPuntuacion.appendChild(h1);
+      divPuntuacion.appendChild(h3);
+;
+}
+
+initCrono();

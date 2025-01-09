@@ -14,7 +14,7 @@ body {
   background-color: #f9f9f9;
 }
 
-.container {
+.container, .puntuacion {
   width: 80%;
   max-width: 800px;
   background-color: #fff;
