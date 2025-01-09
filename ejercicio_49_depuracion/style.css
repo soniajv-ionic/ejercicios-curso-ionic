@@ -18,6 +18,7 @@
     .input-group {
       margin-bottom: 15px;
     }
+
     input {
       padding: 10px;
       margin: 5px;
@@ -31,13 +32,13 @@
       margin: 5px;
       border-radius: 10px;
       border: 1px solid #ccc;
-      background-color: #4CAF50;
+      background-color: #ffabf2;
       color: white;
       cursor: pointer;
       font-size: 16px;
     }
     button:hover {
-      background-color: #45a049;
+      background-color: #ff37ac;
     }
     .result {
       margin-top: 20px;
